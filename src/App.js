@@ -5,6 +5,7 @@ import Header2 from "./components/Header2";
 import Search from "./components/Search";
 import useAxios from "./hooks/useAxios";
 import Search2 from "./components/Search2"
+import Modal from "./components/Modal";
 // Create Context
 export const ImageContext = createContext();
 
@@ -27,16 +28,17 @@ function App() {
 
         <ImageContext.Provider value={value}>
           <Header>
-            <Search />
-          </Header>
-          <Header2>
-            <Search2/>
+             <Search />
+           </Header>
+           <Header2>
+             <Search2/>
           </Header2>
-         <div>
+          <div>
           <Images/>
         </div>
           
         </ImageContext.Provider>
+
       
   );
 }

@@ -1,17 +1,45 @@
 import React from "react";
+import { useState } from "react";
 import { SlLike } from "react-icons/sl";
+import { Modal } from "antd";
 const Img = ({ data }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   return (
-    //href we want to a modal for this
     <div className="card w-72 bg-base-100 shadow-xl scale-95">
       <figure>
-        <a href={data.urls.regular} target="_blank" rel="noreferrer">
+        {/* <a href={data.urls.regular} target="_blank" rel="noreferrer"> */}
+        <button onClick={showModal}>
           <img
             className="w-full rounded-lg "
             src={data.urls.small}
             alt={data.alt_description}
           />
-        </a>
+        </button>
+        {/*_1 adding this before img tag was not working */}
+        {/* modal code */}
+        <Modal 
+          title="Basic Modal"
+          open={isModalOpen}
+          onOk={handleOk}
+          okButtonProps={{  type: "dashed" }}
+          onCancel={handleCancel}
+        >
+          <p className="bg-slate-300">Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Modal>
+        {/* modal code finishes */}
+
+        {/* </a> */}
       </figure>
       <div className="card-body px-4">
         <div className="flex flex-row justify-between">
