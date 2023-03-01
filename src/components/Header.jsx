@@ -1,10 +1,18 @@
 import React from "react";
 import { Switch } from 'antd';
 import {CgDarkMode} from "react-icons/cg"
-const onChange = (checked) => {
-  // console.log(`switch to ${checked}`);
-};
+import { useContext } from "react";
+import { ImageContext } from "../App";
+
 const Header = ({ children }) => {
+  const { response, isLoading,theme,themeChange } = useContext(ImageContext);
+  const onChange = (checked) => {
+    if(checked)
+    themeChange("dark")
+    else
+    themeChange("cupcake")    
+  };
+ 
   return (
     <div className=" navbar bg-base-100">
       <div className="navbar-start">
@@ -55,7 +63,7 @@ const Header = ({ children }) => {
         <div className="px-2">
       <CgDarkMode className="text-2xl"/>     
           </div>   
-        <Switch defaultChecked onChange={onChange} />
+        <Switch onChange={onChange} />
       </div>
     </div>
   );

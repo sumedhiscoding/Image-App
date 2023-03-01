@@ -30,7 +30,7 @@ const Search2 = () => {
     <div>
       <div className="flex">
         <input
-          className="bg-gray-50 border placeholder-slate-400 focus:placeholder-black border-gray-300 text-sm w-96 pr-20 indent-2 outline-none focus:border-pink-900 rounded-md "
+          className="bg-gray-50 border placeholder-slate-400 focus:placeholder-black border-gray-300 text-sm w-96 pr-20 indent-2 outline-none focus:border-pink-900"
           type="search"
           placeholder=" Search high resolution Images, categories..."
           value={searchValue}

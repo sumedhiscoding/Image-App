@@ -2,7 +2,21 @@ import React from "react";
 import { useState } from "react";
 import { SlLike } from "react-icons/sl";
 import { Modal } from "antd";
+import CustomModal from "./CustomModal";
 const Img = ({ data }) => {
+  let [likes,setLikes]=useState(data.likes)
+  let [likesstring,setLikesString]=useState("")
+  const likesCalculator=(likes)=>{
+    if(likes>1000){
+      likes =likes/1000
+     likes=likes.toPrecision(2)
+      return likesstring=likes.toString()+"k"
+    }
+    else{
+      return likes
+    }
+  }
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -26,16 +40,18 @@ const Img = ({ data }) => {
         </button>
         {/*_1 adding this before img tag was not working */}
         {/* modal code */}
-        <Modal 
-          title="Basic Modal"
+        <Modal
           open={isModalOpen}
           onOk={handleOk}
-          okButtonProps={{  type: "dashed" }}
+          okButtonProps={{ type: "dashed" }}
           onCancel={handleCancel}
+          width={700}
+          centered
+          className="object-cover"
         >
-          <p className="bg-slate-300">Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+          <p>
+            <CustomModal data={data}/>
+          </p>
         </Modal>
         {/* modal code finishes */}
 
@@ -49,13 +65,13 @@ const Img = ({ data }) => {
                 <img src={data.user.profile_image.medium} alt="profile pic" />
               </div>
             </div>
-            <div className="px-1.5">
-              <div className="px-1 text-sm font-thin">{data.user.name}</div>
+            <div className="px-1.5 flex-row items-center">
+              <div className="px-1 text-sm font-semibold">{data.user.name}</div>
               <div className="text-xs font-thin"> @{data.user.username}</div>
             </div>
           </div>
           <div className="flex font-thin ">
-            <SlLike className="mx-2 my-1" /> {data.likes}
+            <SlLike className="mx-2 my-1" /> {likesCalculator(data.likes)}
           </div>
         </div>
       </div>
