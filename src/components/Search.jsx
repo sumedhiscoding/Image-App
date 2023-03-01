@@ -30,7 +30,7 @@ const SearchField = () => {
     <div className="flex ">
       <div className="flex justify-end">
         <input
-          className="bg-gray-50 border placeholder-slate-300 border-gray-300 text-sm w-full  px-20 outline-none focus:border-pink-500 "
+          className="bg-gray-50 border placeholder-slate-400 focus:placeholder-black border-gray-300 text-sm w-72 indent-2 outline-none focus:border-pink-900"
           type="search"
           placeholder=" Search Images here"
           value={searchValue}
@@ -44,7 +44,7 @@ const SearchField = () => {
           onClick={handleButtonSearch}
           // disabled={!searchValue}
           className="m-1 inline-flex p-2  items-center justify-center"
-          color="white"
+          
           icon={<BsSearch className=" text-slate-600 " />}
         />
       </Tooltip>
